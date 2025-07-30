@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JT BCA GADAG</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #f4f6f8;
+    }
+
+    header {
+      background: #003366;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+    }
+
+    header h1 {
+      flex-grow: 1;
+      margin-left: 15px;
+      font-size: 22px;
+    }
+
+    .menu-btn {
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      right: 20px;
+      top: 80px;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+      border-radius: 6px;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+    }
+
+    .dropdown a:hover {
+      background-color: #e0e0e0;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    /* Sliding Gallery Styles */
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 3px solid #003366;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  height: auto;
+}
+
+.nav-buttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.nav-buttons button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background: #003366;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav-buttons button:hover {
+  background: #0055a5;
+}
+
+
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav {
+        flex-direction: column;
+      }
+    }
+    h2{
+        align-content: center;
+    }
+
+header {
+  background: #003366;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* CENTER everything */
+  gap: 15px;
+}
+
+.marquee-box {
+  overflow: hidden;
+  white-space: nowrap;
+  flex-grow: 1;
+  max-width: 500px;
+}
+
+.marquee-text {
+  display: inline-block;
+  animation: slideText 7s linear infinite;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+@keyframes slideText {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+
+.social-icons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2);
+}
+
+.center-heading {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #003366;
+}
+
+.center-para {
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Logo">
+  <div class="marquee-box">
+    <div class="marquee-text">KLE'S JT BCA COLLEGE GADAG</div>
+  </div>
+  <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+</header>
+
+
+
+<div class="dropdown" id="menu">
+  <a href="/index.html">HOME</a>
+  <a href="#gallery">GALLERY</a>
+  <a href="/VIDEOS.HTML">VIDEOS</a>
+</div>
+
+<section id="home">
+ <h2 class="center-heading">Welcome to JT BCA GADAG</h2>
+
+  <p>
+    <p class="center-para">
+  JT BCA GADAG provides top-tier education in computer applications.<br>
+  Join us to explore the world of technology and innovation!
+</p>
+
+  </p>
+</section>
+
+<section id="gallery">
+  <h2 style="text-align: center;">Gallery</h2>
+  <div class="slider-container">
+    <div class="slider" id="slider">
+      <img src="/1.jfif" alt="Photo 1">
+      <img src="/2.jfif" alt="Photo 2">
+      <img src="/3.jfif" alt="Photo 3">
+    </div>
+  </div>
+  <div class="nav-buttons">
+    <button onclick="prevSlide()">⟨</button>
+    <button onclick="nextSlide()">⟩</button>
+  </div>
+</section>
+
+
+<script>
+  // Menu toggle
+  function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  // Auto close menu on outside click
+  window.onclick = function(e) {
+    if (!e.target.matches('.menu-btn')) {
+      document.getElementById("menu").style.display = "none";
+    }
+  }
+
+  // Sliding gallery
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    const slider = document.getElementById("slider");
+    const totalSlides = slider.children.length;
+    if (index >= totalSlides) currentSlide = 0;
+    else if (index < 0) currentSlide = totalSlides - 1;
+    else currentSlide = index;
+
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+
+  function nextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    showSlide(currentSlide - 1);
+  }
+
+  // Auto-slide every 3 seconds
+  setInterval(() => {
+    nextSlide();
+  }, 3000);
+</script>
+<section id="videos">
+  <h2 style="text-align: center;">Our College Video</h2>
+  <div style="display: flex; justify-content: center; margin-top: 20px;">
+    <iframe width="100%" height="315"
+      src="https://www.youtube.com/embed/1VqNal3NxL0"
+      title="College Video"
+      frameborder="0"
+      style="max-width: 560px;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<footer>
+    <div class="social-icons">
+  <a href="https://www.instagram.com/jtbca_gadag/" target="_blank" title="Instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+  </a>
+  <a href="https://www.facebook.com/gadag.bca#" target="_blank" title="Facebook">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+  </a>
+  <a href="mailto:youremail@example.com" title="Email">
+    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email">
+  </a>
+</div>
+  &copy; 2025 JT BCA GADAG. All rights reserved.
+</footer>
+
+
+</body>
+</html>
